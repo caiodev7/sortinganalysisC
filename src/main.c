@@ -20,13 +20,41 @@ int main() {
 
     int n = 5;
 
-    printf("Antes:\n");
+    int opcao;
+
+    printf("===== ALGORITMOS DE ORDENACAO =====\n\n");
+
+    printf("1 - Bubble Sort\n");
+    printf("2 - Selection Sort\n");
+    printf("3 - Insertion Sort\n\n");
+
+    printf("Escolha uma opcao: ");
+    scanf("%d", &opcao);
+
+    printf("\nVetor antes da ordenacao:\n");
 
     imprimirVetor(v, n);
 
-    insertionSort(v, n);
+    switch(opcao) {
 
-    printf("Depois:\n");
+        case 1:
+            bubbleSort(v, n);
+            break;
+
+        case 2:
+            selectionSort(v, n);
+            break;
+
+        case 3:
+            insertionSort(v, n);
+            break;
+
+        default:
+            printf("\nOpcao invalida!\n");
+            return 1;
+    }
+
+    printf("\nVetor depois da ordenacao:\n");
 
     imprimirVetor(v, n);
 
