@@ -4,15 +4,7 @@
 #include "basicos/selection.h"
 #include "basicos/insertion.h"
 
-void imprimirVetor(int v[], int n) {
-
-    for(int i = 0; i < n; i++) {
-
-        printf("%d ", v[i]);
-    }
-
-    printf("\n");
-}
+#include "utils/utils.h"
 
 int main() {
 
