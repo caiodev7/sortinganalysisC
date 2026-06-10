@@ -1,6 +1,8 @@
 #ifndef INSERTION_H
 #define INSERTION_H
 
-void insertionSort(int v[], int n);
+#include "../utils/estatisticas.h"
+
+void insertionSort(int v[], int n, Estatisticas *stats);
 
 #endif

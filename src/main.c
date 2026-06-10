@@ -6,8 +6,10 @@
 #include "avancados/merge.h"
 
 #include "utils/utils.h"
+#include "utils/estatisticas.h"
 
-int main() {
+int main()
+{
 
     int v[] = {5, 4, 3, 2, 1};
 
@@ -29,29 +31,58 @@ int main() {
 
     imprimirVetor(v, n);
 
-    switch(opcao) {
+    switch (opcao)
+{
 
-        case 1:
-            bubbleSort(v, n);
-            break;
+case 1:
+{
+    Estatisticas stats = {0, 0};
 
-        case 2:
-            selectionSort(v, n);
-            break;
+    bubbleSort(v, n, &stats);
 
-        case 3:
-            insertionSort(v, n);
-            break;
+    printf("\nComparacoes: %ld\n", stats.comparacoes);
+    printf("Trocas: %ld\n", stats.trocas);
+
+    break;
+}
+
+case 2:
+{
+    Estatisticas stats = {0, 0};
+
+    selectionSort(v, n, &stats);
+
+    printf("\nComparacoes: %ld\n", stats.comparacoes);
+    printf("Trocas: %ld\n", stats.trocas);
+
+    break;
+}
+
+case 3:
+{
+    Estatisticas stats = {0, 0};
+
+    insertionSort(v, n, &stats);
+
+    printf("\nComparacoes: %ld\n", stats.comparacoes);
+    printf("Trocas: %ld\n", stats.trocas);
+
+    break;
+}
+
+case 4:
+{
+    mergeSort(v, 0, n - 1);
+
+    break;
+}
+
+default:
+    printf("\nOpcao invalida!\n");
+    return 1;
+}
 
 
-        case 4:
-            mergeSort(v, 0, n - 1);
-            break;
-
-        default:
-            printf("\nOpcao invalida!\n");
-            return 1;
-    }
 
     printf("\nVetor depois da ordenacao:\n");
 

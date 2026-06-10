@@ -1,18 +1,28 @@
 #include "insertion.h"
 
-void insertionSort(int v[], int n) {
-
-    for(int i = 1; i < n; i++) {
-
+void insertionSort(int v[], int n, Estatisticas *stats)
+{
+    for (int i = 1; i < n; i++)
+    {
         int atual = v[i];
-
         int j = i - 1;
 
-        while(j >= 0 && v[j] > atual) {
+        while (j >= 0)
+        {
+            stats->comparacoes++;
 
-            v[j + 1] = v[j];
+            if (v[j] > atual)
+            {
+                v[j + 1] = v[j];
 
-            j--;
+                stats->trocas++;
+
+                j--;
+            }
+            else
+            {
+                break;
+            }
         }
 
         v[j + 1] = atual;

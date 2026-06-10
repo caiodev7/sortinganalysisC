@@ -1,6 +1,8 @@
 #ifndef SELECTION_H
 #define SELECTION_H
 
-void selectionSort(int v[], int n);
+#include "../utils/estatisticas.h"
+
+void selectionSort(int v[], int n, Estatisticas *stats);
 
 #endif
