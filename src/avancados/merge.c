@@ -1,6 +1,7 @@
 #include "merge.h"
 
-void merge(int v[], int inicio, int meio, int fim) {
+void merge(int v[], int inicio, int meio, int fim)
+{
 
     int tamanho1 = meio - inicio + 1;
     int tamanho2 = fim - meio;
@@ -8,11 +9,13 @@ void merge(int v[], int inicio, int meio, int fim) {
     int esquerda[tamanho1];
     int direita[tamanho2];
 
-    for(int i = 0; i < tamanho1; i++) {
+    for (int i = 0; i < tamanho1; i++)
+    {
         esquerda[i] = v[inicio + i];
     }
 
-    for(int j = 0; j < tamanho2; j++) {
+    for (int j = 0; j < tamanho2; j++)
+    {
         direita[j] = v[meio + 1 + j];
     }
 
@@ -20,12 +23,16 @@ void merge(int v[], int inicio, int meio, int fim) {
     int j = 0;
     int k = inicio;
 
-    while(i < tamanho1 && j < tamanho2) {
+    while (i < tamanho1 && j < tamanho2)
+    {
 
-        if(esquerda[i] <= direita[j]) {
+        if (esquerda[i] <= direita[j])
+        {
             v[k] = esquerda[i];
             i++;
-        } else {
+        }
+        else
+        {
             v[k] = direita[j];
             j++;
         }
@@ -33,22 +40,26 @@ void merge(int v[], int inicio, int meio, int fim) {
         k++;
     }
 
-    while(i < tamanho1) {
+    while (i < tamanho1)
+    {
         v[k] = esquerda[i];
         i++;
         k++;
     }
 
-    while(j < tamanho2) {
+    while (j < tamanho2)
+    {
         v[k] = direita[j];
         j++;
         k++;
     }
 }
 
-void mergeSort(int v[], int inicio, int fim) {
+void mergeSort(int v[], int inicio, int fim)
+{
 
-    if(inicio < fim) {
+    if (inicio < fim)
+    {
 
         int meio = inicio + (fim - inicio) / 2;
 
