@@ -4,6 +4,7 @@
 #include "basicos/selection.h"
 #include "basicos/insertion.h"
 #include "avancados/merge.h"
+#include "avancados/quick.h"
 
 #include "utils/utils.h"
 #include "utils/estatisticas.h"
@@ -33,6 +34,7 @@ int main()
     printf("3 - Insertion Sort\n");
     printf("4 - Merge Sort\n");
     printf("5 - Comparar Todos\n\n");
+    printf("6 - Quick Sort\n");
 
     printf("Escolha uma opcao: ");
     scanf("%d", &opcao);
@@ -129,6 +131,11 @@ int main()
         imprimirVetor(vMerge, n);
 
         return 0;
+    }
+    case 6:
+    {
+        quickSort(v, 0, n - 1);
+        break;
     }
 
     default:
