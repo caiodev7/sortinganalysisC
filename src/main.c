@@ -3,6 +3,7 @@
 #include "basicos/bubble.h"
 #include "basicos/selection.h"
 #include "basicos/insertion.h"
+#include "avancados/merge.h"
 
 #include "utils/utils.h"
 
@@ -18,7 +19,8 @@ int main() {
 
     printf("1 - Bubble Sort\n");
     printf("2 - Selection Sort\n");
-    printf("3 - Insertion Sort\n\n");
+    printf("3 - Insertion Sort\n");
+    printf("4 - Merge Sort\n\n");
 
     printf("Escolha uma opcao: ");
     scanf("%d", &opcao);
@@ -39,6 +41,11 @@ int main() {
 
         case 3:
             insertionSort(v, n);
+            break;
+
+
+        case 4:
+            mergeSort(v, 0, n - 1);
             break;
 
         default:
