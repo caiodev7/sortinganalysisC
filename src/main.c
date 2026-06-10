@@ -134,7 +134,13 @@ int main()
     }
     case 6:
     {
-        quickSort(v, 0, n - 1);
+        Estatisticas stats = {0, 0};
+
+        quickSort(v, 0, n - 1, &stats);
+
+        printf("\nComparacoes: %ld\n", stats.comparacoes);
+        printf("Trocas: %ld\n", stats.trocas);
+
         break;
     }
 

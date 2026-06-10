@@ -1,6 +1,8 @@
 #ifndef QUICK_H
 #define QUICK_H
 
-void quickSort(int v[], int inicio, int fim);
+#include "../utils/estatisticas.h"
+
+void quickSort(int v[], int inicio, int fim, Estatisticas *stats);
 
 #endif
