@@ -11,11 +11,20 @@
 int main()
 {
 
-    int v[] = {5, 4, 3, 2, 1};
+  int n;
 
-    int n = 5;
+printf("Digite o tamanho do vetor: ");
+scanf("%d", &n);
 
-    int opcao;
+int v[n]; 
+
+printf("\nDigite os elementos do vetor:\n");
+
+for (int i = 0; i < n; i++)
+{
+    scanf("%d", &v[i]);
+}
+int opcao;
 
     printf("===== ALGORITMOS DE ORDENACAO =====\n\n");
 
@@ -24,8 +33,9 @@ int main()
     printf("3 - Insertion Sort\n");
     printf("4 - Merge Sort\n\n");
 
-    printf("Escolha uma opcao: ");
+   printf("Escolha uma opcao: ");
     scanf("%d", &opcao);
+    
 
     printf("\nVetor antes da ordenacao:\n");
 
