@@ -5,6 +5,7 @@
 #include "basicos/insertion.h"
 #include "avancados/merge.h"
 #include "avancados/quick.h"
+#include "avancados/heap.h"
 
 #include "utils/utils.h"
 #include "utils/estatisticas.h"
@@ -35,6 +36,7 @@ int main()
     printf("4 - Merge Sort\n");
     printf("5 - Comparar Todos\n\n");
     printf("6 - Quick Sort\n");
+    printf("7 - Heap Sort\n");
 
     printf("Escolha uma opcao: ");
     scanf("%d", &opcao);
@@ -47,6 +49,7 @@ int main()
     int vSelection[n];
     int vInsertion[n];
     int vMerge[n];
+    int vHeap[n];
 
     for (int i = 0; i < n; i++)
     {
@@ -54,6 +57,7 @@ int main()
         vSelection[i] = v[i];
         vInsertion[i] = v[i];
         vMerge[i] = v[i];
+        vHeap[i] = v[i];
     }
 
     switch (opcao)
@@ -106,11 +110,13 @@ int main()
         Estatisticas bubbleStats = {0, 0};
         Estatisticas selectionStats = {0, 0};
         Estatisticas insertionStats = {0, 0};
+        Estatisticas heapStats = {0, 0};
 
         bubbleSort(vBubble, n, &bubbleStats);
         selectionSort(vSelection, n, &selectionStats);
         insertionSort(vInsertion, n, &insertionStats);
         mergeSort(vMerge, 0, n - 1);
+        heapSort(vHeap, n, &heapStats);
 
         printf("\n===== COMPARACAO DOS ALGORITMOS =====\n");
 
@@ -125,6 +131,9 @@ int main()
         printf("\nInsertion Sort\n");
         printf("Comparacoes: %ld\n", insertionStats.comparacoes);
         printf("Trocas: %ld\n", insertionStats.trocas);
+        printf("\nHeap Sort\n");
+        printf("Comparacoes: %ld\n", heapStats.comparacoes);
+        printf("Trocas: %ld\n", heapStats.trocas);
 
         printf("\nMerge Sort\n");
         printf("Vetor ordenado: ");
@@ -137,6 +146,18 @@ int main()
         Estatisticas stats = {0, 0};
 
         quickSort(v, 0, n - 1, &stats);
+
+        printf("\nComparacoes: %ld\n", stats.comparacoes);
+        printf("Trocas: %ld\n", stats.trocas);
+
+        break;
+    }
+
+    case 7:
+    {
+        Estatisticas stats = {0, 0};
+
+        heapSort(v, n, &stats);
 
         printf("\nComparacoes: %ld\n", stats.comparacoes);
         printf("Trocas: %ld\n", stats.trocas);
