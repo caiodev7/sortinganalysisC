@@ -1,0 +1,63 @@
+        -:    0:Source:src/avancados/heap.c
+        -:    0:Graph:testes_gcov-heap.gcno
+        -:    0:Data:testes_gcov-heap.gcda
+        -:    0:Runs:1
+        -:    1:#include "heap.h"
+        -:    2:
+       20:    3:void heapify(int v[], int n, int i, Estatisticas *stats)
+        -:    4:{
+       20:    5:    int maior = i;
+        -:    6:
+       20:    7:    int esquerda = 2 * i + 1;
+       20:    8:    int direita = 2 * i + 2;
+        -:    9:
+       20:   10:    if (esquerda < n)
+        -:   11:    {
+       11:   12:        stats->comparacoes++;
+        -:   13:
+       11:   14:        if (v[esquerda] > v[maior])
+        -:   15:        {
+        6:   16:            maior = esquerda;
+        -:   17:        }
+        -:   18:    }
+        -:   19:
+       20:   20:    if (direita < n)
+        -:   21:    {
+        8:   22:        stats->comparacoes++;
+        -:   23:
+        8:   24:        if (v[direita] > v[maior])
+        -:   25:        {
+        4:   26:            maior = direita;
+        -:   27:        }
+        -:   28:    }
+        -:   29:
+       20:   30:    if (maior != i)
+        -:   31:    {
+        8:   32:        int temp = v[i];
+        8:   33:        v[i] = v[maior];
+        8:   34:        v[maior] = temp;
+        -:   35:
+        8:   36:        stats->trocas++;
+        -:   37:
+        8:   38:        heapify(v, n, maior, stats);
+        -:   39:    }
+       20:   40:}
+        -:   41:
+        2:   42:void heapSort(int v[], int n, Estatisticas *stats)
+        -:   43:{
+        6:   44:    for (int i = n / 2 - 1; i >= 0; i--)
+        -:   45:    {
+        4:   46:        heapify(v, n, i, stats);
+        -:   47:    }
+        -:   48:
+       10:   49:    for (int i = n - 1; i > 0; i--)
+        -:   50:    {
+        8:   51:        int temp = v[0];
+        8:   52:        v[0] = v[i];
+        8:   53:        v[i] = temp;
+        -:   54:
+        8:   55:        stats->trocas++;
+        -:   56:
+        8:   57:        heapify(v, i, 0, stats);
+        -:   58:    }
+        2:   59:}
