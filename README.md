@@ -2,30 +2,34 @@
 
 ## 📚 Sobre o Projeto
 
-Este projeto foi desenvolvido como parte da disciplina de Estrutura de Dados, com o objetivo de implementar, testar e analisar diferentes algoritmos de ordenação utilizando a linguagem C.
+Este projeto foi desenvolvido para a disciplina de Estrutura de Dados com o objetivo de implementar, testar e analisar algoritmos clássicos de ordenação utilizando a linguagem C.
 
-Além da implementação dos algoritmos, o sistema realiza a coleta de estatísticas de execução, permitindo comparar o comportamento de cada método de ordenação através da quantidade de comparações e trocas realizadas.
+Além da implementação dos algoritmos, foram realizadas análises de desempenho através de estatísticas de execução, cobertura de código (GCOV) e profiling (GPROF), conforme os requisitos da disciplina.
 
 ---
 
 ## 🎯 Objetivos
 
-* Implementar algoritmos clássicos de ordenação.
+* Implementar algoritmos básicos e avançados de ordenação.
 * Aplicar conceitos de modularização em C.
-* Comparar o desempenho dos algoritmos.
-* Analisar a quantidade de comparações e trocas.
-* Desenvolver boas práticas de organização de projetos.
+* Comparar algoritmos através de estatísticas de execução.
 * Utilizar Git e GitHub para versionamento.
+* Realizar testes automatizados.
+* Avaliar cobertura de código com GCOV.
+* Avaliar desempenho com GPROF.
+* Documentar o desenvolvimento do projeto.
 
 ---
 
 ## 🛠 Tecnologias Utilizadas
 
-* Linguagem C
-* GCC (GNU Compiler Collection)
+* Linguagem C (C11)
+* GCC
 * Git
 * GitHub
 * Visual Studio Code
+* GCOV
+* GPROF
 
 ---
 
@@ -33,7 +37,8 @@ Além da implementação dos algoritmos, o sistema realiza a coleta de estatíst
 
 ```text
 ordenacao-trio/
-│
+├── README.md
+├── Makefile
 ├── src/
 │   ├── basicos/
 │   │   ├── bubble.c
@@ -47,20 +52,25 @@ ordenacao-trio/
 │   │   ├── merge.c
 │   │   ├── merge.h
 │   │   ├── quick.c
-│   │   └── quick.h
+│   │   ├── quick.h
+│   │   ├── heap.c
+│   │   └── heap.h
 │   │
 │   ├── utils/
 │   │   ├── utils.c
 │   │   ├── utils.h
-│   │   ├── estatisticas.c
 │   │   └── estatisticas.h
 │   │
 │   └── main.c
 │
-├── docs/
 ├── tests/
-├── Makefile
-└── README.md
+│   └── test_basic.c
+│
+└── docs/
+    ├── cobertura.md
+    ├── perfil.md
+    ├── perfil_bruto.txt
+    └── uso-ia.md
 ```
 
 ---
@@ -69,61 +79,39 @@ ordenacao-trio/
 
 ### Bubble Sort
 
-Algoritmo baseado na comparação entre elementos adjacentes, realizando trocas até que o vetor esteja ordenado.
-
-Complexidade:
-
 * Melhor Caso: O(n)
 * Caso Médio: O(n²)
 * Pior Caso: O(n²)
 
----
-
 ### Selection Sort
-
-Seleciona repetidamente o menor elemento do vetor e o posiciona corretamente.
-
-Complexidade:
 
 * Melhor Caso: O(n²)
 * Caso Médio: O(n²)
 * Pior Caso: O(n²)
 
----
-
 ### Insertion Sort
-
-Insere cada elemento na posição correta dentro da parte já ordenada do vetor.
-
-Complexidade:
 
 * Melhor Caso: O(n)
 * Caso Médio: O(n²)
 * Pior Caso: O(n²)
 
----
-
 ### Merge Sort
-
-Algoritmo baseado na estratégia de Divisão e Conquista.
-
-Complexidade:
 
 * Melhor Caso: O(n log n)
 * Caso Médio: O(n log n)
 * Pior Caso: O(n log n)
 
----
-
 ### Quick Sort
-
-Algoritmo baseado na escolha de um pivô para particionar o vetor.
-
-Complexidade:
 
 * Melhor Caso: O(n log n)
 * Caso Médio: O(n log n)
 * Pior Caso: O(n²)
+
+### Heap Sort
+
+* Melhor Caso: O(n log n)
+* Caso Médio: O(n log n)
+* Pior Caso: O(n log n)
 
 ---
 
@@ -134,45 +122,92 @@ O sistema registra:
 * Quantidade de comparações
 * Quantidade de trocas/movimentações
 
-Essas métricas permitem comparar a eficiência prática dos algoritmos.
+Essas métricas permitem comparar a eficiência prática dos algoritmos implementados.
 
 ---
 
-## 🚀 Funcionalidades
+## ✅ Testes Implementados
 
-* Entrada dinâmica de vetores.
-* Escolha do algoritmo pelo menu.
-* Ordenação dos dados.
-* Exibição do vetor antes e depois da ordenação.
-* Contagem de comparações.
-* Contagem de trocas.
-* Comparação entre algoritmos.
-* Implementação modular.
+Foram desenvolvidos testes para todos os algoritmos de ordenação.
+
+Cada algoritmo possui pelo menos dois casos de teste, incluindo:
+
+* Vetor aleatório
+* Vetor já ordenado
+* Vetor invertido
+
+Todos os testes foram executados com sucesso.
 
 ---
 
-## ▶ Como Compilar
+## 📈 Cobertura de Código
 
-```bash
-gcc src/main.c \
-src/basicos/bubble.c \
-src/basicos/selection.c \
-src/basicos/insertion.c \
-src/avancados/merge.c \
-src/avancados/quick.c \
-src/utils/utils.c \
--o programa
+Foi utilizada a ferramenta GCOV para análise de cobertura.
+
+Resultado obtido:
+
+* Bubble Sort: 100%
+* Selection Sort: 100%
+* Insertion Sort: 100%
+* Merge Sort: 100%
+* Quick Sort: 100%
+* Heap Sort: 100%
+
+Relatório disponível em:
+
+```text
+docs/cobertura.md
 ```
 
 ---
 
-## ▶ Como Executar
+## ⚡ Profiling de Desempenho
+
+Foi utilizada a ferramenta GPROF para análise de desempenho.
+
+Arquivos gerados:
+
+```text
+docs/perfil_bruto.txt
+docs/perfil.md
+```
+
+---
+
+## 🤖 Uso de Inteligência Artificial
+
+O projeto utilizou ferramentas de IA como apoio educacional para:
+
+* Explicação de algoritmos
+* Revisão de código
+* Correção de erros
+* Apoio na documentação
+
+Toda utilização foi documentada em:
+
+```text
+docs/uso-ia.md
+```
+
+---
+
+## ▶ Compilação
+
+```bash
+gcc src/main.c src/basicos/bubble.c src/basicos/selection.c src/basicos/insertion.c src/avancados/merge.c src/avancados/quick.c src/avancados/heap.c src/utils/utils.c -o programa
+```
+
+---
+
+## ▶ Execução
+
+Linux:
 
 ```bash
 ./programa
 ```
 
-No Windows:
+Windows:
 
 ```bash
 programa.exe
@@ -180,60 +215,22 @@ programa.exe
 
 ---
 
-## 📈 Exemplo de Execução
-
-```text
-Digite o tamanho do vetor: 5
-
-Digite os elementos do vetor:
-9
-4
-1
-7
-2
-
-===== ALGORITMOS DE ORDENACAO =====
-
-1 - Bubble Sort
-2 - Selection Sort
-3 - Insertion Sort
-4 - Merge Sort
-5 - Comparar Todos
-6 - Quick Sort
-
-Escolha uma opcao: 6
-
-Vetor antes da ordenacao:
-9 4 1 7 2
-
-Comparacoes: 8
-Trocas: 4
-
-Vetor depois da ordenacao:
-1 2 4 7 9
-```
-
----
-
-## 👨‍💻 Equipe
-
-Projeto desenvolvido para a disciplina de Estrutura de Dados.
-
-Integrantes do grupo:
+## 👨‍💻 Integrantes
 
 * Caio Ferreira Sousa
-
 
 ---
 
 ## 📌 Status do Projeto
 
-🚧 Em desenvolvimento
+✅ Concluído para entrega acadêmica
 
-Próximas melhorias:
+Funcionalidades implementadas:
 
-* Medição de tempo de execução.
-* Geração automática de relatórios.
-* Testes com vetores de grande porte.
-* Exportação de resultados para arquivo.
-* Gráficos comparativos de desempenho.
+* 6 algoritmos de ordenação
+* Estatísticas de comparações e trocas
+* Testes automatizados
+* Cobertura de código (GCOV)
+* Profiling (GPROF)
+* Documentação técnica
+* Controle de versão com Git/GitHub
